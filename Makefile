@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC			:=	clang 
+CC			:=	cc
 CFLAGS		:=	-Wall -Werror -Wextra
 NAME		:=	cub3d
 LDFLAGS		:=	-L./libft  -L./MLX42 -L/Users/$(USER)/.brew/opt/glfw/lib/

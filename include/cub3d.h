@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reallaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 13:04:33 by reallaou          #+#    #+#             */
-/*   Updated: 2023/03/01 13:04:48 by reallaou         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:31:41 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ int			check_map_inside(t_map *map);
 t_cellpos	get_player_pos(char **map);
 double		get_player_rad(char dir);
 
+void		set_newrad(t_player *player, int direction);
 void		key_hook_handler(mlx_key_data_t keycode, void *data);
 mlx_image_t	*create_minimap(mlx_t *mlx, t_map *map);
 void		put_player_minimap(mlx_image_t	*minimap_img, t_player *player);

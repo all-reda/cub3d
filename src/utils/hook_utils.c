@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reallaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:11:30 by reallaou          #+#    #+#             */
-/*   Updated: 2023/03/01 16:11:42 by reallaou         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:09:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	set_newrad(t_player *player, int direction)
 {
 	double	step;
 
-	step = 0.08;
+	step = 0.02;
 	if (direction == MLX_KEY_RIGHT)
 	{
 		if (player->rad + step > (2 * M_PI))
