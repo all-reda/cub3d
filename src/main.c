@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fl-hote <fl-hote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:03:39 by reallaou          #+#    #+#             */
-/*   Updated: 2023/03/21 13:38:07 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/23 18:28:49 by fl-hote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,15 @@ static void	ft_hook_mov(void *param)
 	
 	data = param;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
+	{
 		set_newrad(data->player, MLX_KEY_LEFT);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
+		cub3d(data);
+	}
+	else if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
+	{
 		set_newrad(data->player, MLX_KEY_RIGHT);
-	cub3d(data);
+		cub3d(data);
+	}
 }
 
 int	main(int argc, char **argv)
@@ -83,12 +88,11 @@ int	main(int argc, char **argv)
 		free_parse(&data);
 	if (init_data(&data))
 		free_data(&data);
-	mlx_close_hook(data.mlx, free_data, &data);
+	//mlx_close_hook(data.mlx, free_data, &data);
+	cub3d(&data);
 	//mlx_key_hook(data.mlx, key_hook_handler, &data);
 	mlx_loop_hook(data.mlx, ft_hook_mov, &data);
-	cub3d(&data);
 	mlx_loop(data.mlx);
-	mlx_terminate(data.mlx);
 	free_data(&data);
 	return (0);
 }
