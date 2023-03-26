@@ -1,0 +1,47 @@
+main
+    parse_arg
+        cub_suffix/
+        map_init/
+        parse_map
+            map_skeleton
+                gnl_no_nl
+                ft_is_identifier
+                ft_is_blankline
+            map_validation
+                while_gnl
+                new_lst_char
+                lst_to_tab_char
+            check_map
+                ft_error_msg
+                check_first_line
+                check_first_collumn
+                check_last_line
+                check_last_collumn
+                check_map_inside
+    free_parse
+        ft_free_strtab
+    init_data
+        ft_error_free
+        init_player
+            get_player_pos
+            get_player_rad
+        create_minimap
+        load_texture
+            data_struct_convert
+    free_data
+        (ft_free_strtab)
+    cub3d
+        put_full_img
+            send_ray
+            render_wall
+        fill_minimap
+            fill_line
+                fill_cell
+                    set_color
+            put_player_minimap
+    ft_hook_mov
+        set_newrad
+        (cub3d)
+    (free_data)
+
+
