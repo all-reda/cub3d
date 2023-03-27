@@ -6,15 +6,14 @@
 #    By: fl-hote <fl-hote@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/01 13:03:09 by reallaou          #+#    #+#              #
-#    Updated: 2023/03/23 16:26:53 by fl-hote          ###   ########.fr        #
+#    Updated: 2023/03/27 16:26:08 by fl-hote          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			:=	cc
-CFLAGS		:=	-Ofast
-NAME		:=	cub3d
+CFLAGS		:=	-Ofast -g
+NAME		:=	cub3D
 LDFLAGS		:=	-L./libft  -L./MLX42 -L/Users/$(USER)/.brew/opt/glfw/lib/
-# LDLIBS		:=	-lft -lmlx42 -lglfw 
 LDLIBS		:=	-lft -lmlx42 -lglfw -framework OpenGL -ldl -pthread -lm
 SRCS		:=	$(wildcard src/*/*.c) src/main.c
 OBJS		:=	$(SRCS:%.c=build/%.o)

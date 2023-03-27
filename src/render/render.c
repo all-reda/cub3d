@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reallaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fl-hote <fl-hote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:07:08 by reallaou          #+#    #+#             */
-/*   Updated: 2023/03/01 16:07:42 by reallaou         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:49:42 by fl-hote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,16 @@ int	data_struct_convert(uint32_t ***dir, const char *path, t_data *data)
 	mlx_delete_xpm42(xpm);
 	*dir = tab;
 	return (0);
+}
+
+void	cub3d(t_data *data)
+{
+	mlx_delete_image(data->mlx, data->mlx_img);
+	data->mlx_img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	put_full_img(data);
+	mlx_image_to_window(data->mlx, data->mlx_img, 0, 0);
+	mlx_delete_image(data->mlx, data->minimap_img);
+	data->minimap_img = create_minimap(data->mlx, data->map);
+	fill_minimap(data);
+	mlx_image_to_window(data->mlx, data->minimap_img, 0, 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fl-hote <fl-hote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:11:30 by reallaou          #+#    #+#             */
-/*   Updated: 2023/03/21 13:09:48 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/27 15:21:25 by fl-hote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,21 @@ t_cellpos	get_new_pos(t_data *data, int direction)
 {
 	t_cellpos	rvalue;
 	double		rad;
+	int			incr;
 
+	incr = 20;
 	rad = data->player->rad;
 	rvalue = data->player->pos;
 	if (direction == MLX_KEY_A || direction == MLX_KEY_D)
 		rad += M_PI / 2;
 	if (direction == MLX_KEY_W || direction == MLX_KEY_D)
-		rvalue.x += cos(rad) / 8;
+		rvalue.x += cos(rad) / incr;
 	else
-		rvalue.x -= cos(rad) / 8;
+		rvalue.x -= cos(rad) / incr;
 	if (direction == MLX_KEY_W || direction == MLX_KEY_D)
-		rvalue.y += sin(rad) / 8;
+		rvalue.y += sin(rad) / incr;
 	else
-		rvalue.y -= sin(rad) / 8;
+		rvalue.y -= sin(rad) / incr;
 	return (rvalue);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fl-hote <fl-hote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 13:04:33 by reallaou          #+#    #+#             */
-/*   Updated: 2023/03/21 13:31:41 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/27 15:06:25 by fl-hote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,4 +163,5 @@ void		put_player_minimap(mlx_image_t	*minimap_img, t_player *player);
 void		move_player(t_data *data, int direction);
 void		cub3d(t_data *data);
 void		fill_minimap(t_data *data);
+void		put_full_img(t_data *data);
 #endif

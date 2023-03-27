@@ -3,8 +3,8 @@ WE ./texture/cs.xpm42
 EA ./texture/blackcs.xpm42
 SO ./texture/bluecs.xpm42
 
-F 225,206,154
-C 204,85,0
+F 66,42,50
+C 36,86,145
 
 1111111111111111111
 1000000000000000001

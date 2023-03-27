@@ -6,7 +6,7 @@
 /*   By: fl-hote <fl-hote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 16:03:39 by reallaou          #+#    #+#             */
-/*   Updated: 2023/03/23 18:28:49 by fl-hote          ###   ########.fr       */
+/*   Updated: 2023/03/27 16:24:43 by fl-hote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,6 @@ void	put_full_img(t_data *data)
 	}
 }
 
-void	cub3d(t_data *data)
-{
-	put_full_img(data);
-	fill_minimap(data);
-	mlx_image_to_window(data->mlx, data->mlx_img, 0, 0);
-	mlx_image_to_window(data->mlx, data->minimap_img, 0, 0);
-}
-
 int	load_texture(t_data *data)
 {
 	data->texture = (t_pxtxtr *)malloc(sizeof(t_pxtxtr));
@@ -63,21 +55,40 @@ int	load_texture(t_data *data)
 	return (0);
 }
 
-static void	ft_hook_mov(void *param)
+static void	ft_hook2(t_data *data, int move_key, int rot_key)
+{
+	if (rot_key)
+		set_newrad(data->player, rot_key);
+	if (move_key)
+		move_player(data, move_key);
+	if (move_key || rot_key)
+		cub3d(data);
+}
+
+static void	ft_hook(void *param)
 {
 	t_data	*data;
-	
+	int		move_key;
+	int		rot_key;
+
+	move_key = 0;
+	rot_key = 0;
 	data = param;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(data->mlx);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
-	{
-		set_newrad(data->player, MLX_KEY_LEFT);
-		cub3d(data);
-	}
-	else if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
-	{
-		set_newrad(data->player, MLX_KEY_RIGHT);
-		cub3d(data);
-	}
+		rot_key = MLX_KEY_LEFT;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
+		rot_key = MLX_KEY_RIGHT;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+		move_key = MLX_KEY_A;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
+		move_key = MLX_KEY_D;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
+		move_key = MLX_KEY_W;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_S))
+		move_key = MLX_KEY_S;
+	ft_hook2(data, move_key, rot_key);
 }
 
 int	main(int argc, char **argv)
@@ -88,10 +99,8 @@ int	main(int argc, char **argv)
 		free_parse(&data);
 	if (init_data(&data))
 		free_data(&data);
-	//mlx_close_hook(data.mlx, free_data, &data);
 	cub3d(&data);
-	//mlx_key_hook(data.mlx, key_hook_handler, &data);
-	mlx_loop_hook(data.mlx, ft_hook_mov, &data);
+	mlx_loop_hook(data.mlx, ft_hook, &data);
 	mlx_loop(data.mlx);
 	free_data(&data);
 	return (0);
