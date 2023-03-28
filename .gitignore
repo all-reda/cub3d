@@ -1,3 +1,4 @@
 *.o
 ex_textures
 memo_fonctions.txt
+.DS_Store
